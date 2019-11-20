@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "148745428959",
+    "firebase_url": "https://freshpick-333b1.firebaseio.com",
+    "project_id": "freshpick-333b1",
+    "storage_bucket": "freshpick-333b1.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:148745428959:android:f4921ed597d24de6de2e6a",
+        "android_client_info": {
+          "package_name": "com.example.freshpick"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "148745428959-47ro5rbntl7t3tk1cu0lhnr13deibbqk.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAbhRDloAThZH60yqvGE2389oWa4QBsj7A"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "148745428959-47ro5rbntl7t3tk1cu0lhnr13deibbqk.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
