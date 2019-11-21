@@ -49,7 +49,7 @@ public class DetailRecyclerViewAdapter extends RecyclerView.Adapter<DetailRecycl
 
         ViewHolder(View itemView) {
             super(itemView);
-            myTextView = itemView.findViewById(R.id.tvAnimalName);
+            myTextView = itemView.findViewById(R.id.userReview);
             itemView.setOnClickListener(this);
         }
 

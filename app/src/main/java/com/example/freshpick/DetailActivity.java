@@ -5,6 +5,7 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -29,7 +30,11 @@ import com.google.firebase.storage.FirebaseStorage;
 import com.google.firebase.storage.StorageReference;
 import com.squareup.picasso.Picasso;
 
+import org.json.JSONException;
+import org.json.JSONObject;
+
 import java.util.ArrayList;
+import java.util.List;
 
 public class DetailActivity extends AppCompatActivity implements DetailRecyclerViewAdapter.ItemClickListener{
 
@@ -96,6 +101,18 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
                         inSeasonText.setTextColor(getResources().getColor(R.color.notInSeasonColor));
                     }
 
+                     ArrayList<String> reviews = (ArrayList<String>) item.get("reviews");
+
+                    Log.d("reviews:", reviews.toString());
+
+
+
+                    // set up the RecyclerView
+                    RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                    recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                    adapter = new DetailRecyclerViewAdapter(getApplicationContext(), reviews);
+                    recyclerView.setAdapter(adapter);
+
 
 
                 } else {
@@ -141,27 +158,18 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
             }
         });
 
+        Button submitTips = (Button) findViewById(R.id.submitTipsButton);
 
-        // data to populate the RecyclerView with
-        ArrayList<String> animalNames = new ArrayList<>();
-        animalNames.add("Horse");
-        animalNames.add("Cow");
-        animalNames.add("Camel");
-        animalNames.add("Sheep");
-        animalNames.add("Goat");
+        submitTips.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
 
-        // set up the RecyclerView
-        RecyclerView recyclerView = findViewById(R.id.recyclerView);
-        recyclerView.setLayoutManager(new LinearLayoutManager(this));
-        adapter = new DetailRecyclerViewAdapter(getApplicationContext(), animalNames);
-        adapter.setClickListener(this);
-        recyclerView.setAdapter(adapter);
-
+            }
+        });
 
     }
 
     @Override
     public void onItemClick(View view, int position) {
-        Toast.makeText(this, "You clicked " + adapter.getItem(position) + " on row number " + position, Toast.LENGTH_SHORT).show();
     }
 }
