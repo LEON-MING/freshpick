@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -28,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -40,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity implements DetailRecyclerViewAdapter.ItemClickListener{
@@ -52,6 +55,10 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
     String itemName = "";
 
     DetailRecyclerViewAdapter adapter;
+
+    QueryDocumentSnapshot item = null;
+
+    ArrayList<String> reviews = null;
 
 
     @Override
@@ -77,7 +84,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
                     QuerySnapshot produceQuery = task.getResult();
 
 
-                    QueryDocumentSnapshot item = null;
+
                     for (QueryDocumentSnapshot doc: produceQuery) {
                         String docName = doc.getString("name");
                         if (docName.equals(itemName)) {
@@ -107,7 +114,9 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
                         inSeasonText.setTextColor(getResources().getColor(R.color.notInSeasonColor));
                     }
 
-                     ArrayList<String> reviews = (ArrayList<String>) item.get("reviews");
+
+                    reviews = (ArrayList<String>) item.get("reviews");
+                    Collections.reverse(reviews);
 
                     Log.d("reviews:", reviews.toString());
 
@@ -127,42 +136,42 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
             }
         });
 
-        // Get good image.
-        goodImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                // Got the download URL for 'users/me/profile.png'
-                ImageView goodImage = (ImageView) findViewById(R.id.GoodImage);
-
-                String photo_ref_url =  uri.toString();
-                Picasso.get().load(photo_ref_url).into(goodImage);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-                Log.d("good image error:", exception.toString());
-            }
-        });
-
-
-        // Get bad image.
-        badImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-            @Override
-            public void onSuccess(Uri uri) {
-                // Got the download URL for 'users/me/profile.png'
-                ImageView badImage = (ImageView) findViewById(R.id.BadImage);
-
-                String photo_ref_url =  uri.toString();
-                Picasso.get().load(photo_ref_url).into(badImage);
-            }
-        }).addOnFailureListener(new OnFailureListener() {
-            @Override
-            public void onFailure(@NonNull Exception exception) {
-                // Handle any errors
-                Log.d("bad image error:", exception.toString());
-            }
-        });
+//        // Get good image.
+//        goodImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//            @Override
+//            public void onSuccess(Uri uri) {
+//                // Got the download URL for 'users/me/profile.png'
+//                ImageView goodImage = (ImageView) findViewById(R.id.GoodImage);
+//
+//                String photo_ref_url =  uri.toString();
+//                Picasso.get().load(photo_ref_url).into(goodImage);
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle any errors
+//                Log.d("good image error:", exception.toString());
+//            }
+//        });
+//
+//
+//        // Get bad image.
+//        badImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+//            @Override
+//            public void onSuccess(Uri uri) {
+//                // Got the download URL for 'users/me/profile.png'
+//                ImageView badImage = (ImageView) findViewById(R.id.BadImage);
+//
+//                String photo_ref_url =  uri.toString();
+//                Picasso.get().load(photo_ref_url).into(badImage);
+//            }
+//        }).addOnFailureListener(new OnFailureListener() {
+//            @Override
+//            public void onFailure(@NonNull Exception exception) {
+//                // Handle any errors
+//                Log.d("bad image error:", exception.toString());
+//            }
+//        });
 
         Button submitTips = (Button) findViewById(R.id.submitTipsButton);
 
@@ -203,10 +212,25 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
 //                });
 
         Button submitTip = (Button) popupView.findViewById(R.id.submitTipButton);
+        final EditText userTip = (EditText)  popupView.findViewById(R.id.userTip);
 
         submitTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                DocumentReference itemRef = db.collection("produce").document(item.getId());
+                Log.d("item id:", item.getId());
+                Log.d("user tip:", userTip.getText().toString());
+
+                itemRef.update("reviews", FieldValue.arrayUnion(userTip.getText().toString()));
+
+                reviews.add(0, userTip.getText().toString());
+
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                adapter = new DetailRecyclerViewAdapter(getApplicationContext(), reviews);
+                recyclerView.setAdapter(adapter);
+
                 popupWindow.dismiss();
             }
         });
