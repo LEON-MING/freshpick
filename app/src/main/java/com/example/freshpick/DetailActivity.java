@@ -136,42 +136,42 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
             }
         });
 
-//        // Get good image.
-//        goodImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                // Got the download URL for 'users/me/profile.png'
-//                ImageView goodImage = (ImageView) findViewById(R.id.GoodImage);
-//
-//                String photo_ref_url =  uri.toString();
-//                Picasso.get().load(photo_ref_url).into(goodImage);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//                Log.d("good image error:", exception.toString());
-//            }
-//        });
-//
-//
-//        // Get bad image.
-//        badImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
-//            @Override
-//            public void onSuccess(Uri uri) {
-//                // Got the download URL for 'users/me/profile.png'
-//                ImageView badImage = (ImageView) findViewById(R.id.BadImage);
-//
-//                String photo_ref_url =  uri.toString();
-//                Picasso.get().load(photo_ref_url).into(badImage);
-//            }
-//        }).addOnFailureListener(new OnFailureListener() {
-//            @Override
-//            public void onFailure(@NonNull Exception exception) {
-//                // Handle any errors
-//                Log.d("bad image error:", exception.toString());
-//            }
-//        });
+        // Get good image.
+        goodImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                ImageView goodImage = (ImageView) findViewById(R.id.GoodImage);
+
+                String photo_ref_url =  uri.toString();
+                Picasso.get().load(photo_ref_url).into(goodImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.d("good image error:", exception.toString());
+            }
+        });
+
+
+        // Get bad image.
+        badImagesRef.child(itemName + ".jpg").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
+            @Override
+            public void onSuccess(Uri uri) {
+                // Got the download URL for 'users/me/profile.png'
+                ImageView badImage = (ImageView) findViewById(R.id.BadImage);
+
+                String photo_ref_url =  uri.toString();
+                Picasso.get().load(photo_ref_url).into(badImage);
+            }
+        }).addOnFailureListener(new OnFailureListener() {
+            @Override
+            public void onFailure(@NonNull Exception exception) {
+                // Handle any errors
+                Log.d("bad image error:", exception.toString());
+            }
+        });
 
         Button submitTips = (Button) findViewById(R.id.submitTipsButton);
 
