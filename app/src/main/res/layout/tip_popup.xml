@@ -47,12 +47,12 @@
             app:layout_constraintTop_toTopOf="parent" />
 
         <Button
-            android:id="@+id/submitTipsButton"
+            android:id="@+id/submitTipButton"
             android:layout_width="110dp"
             android:layout_height="49dp"
             android:background="@drawable/transparent_bg_bordered_button"
             android:fontFamily="@font/lato"
-            android:text="submit tips"
+            android:text="submit tip"
             android:textColor="@color/headerColor"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
