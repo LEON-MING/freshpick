@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
-    <color name="colorPrimary">#008577</color>
+    <color name="colorPrimary">#85D382</color>
     <color name="colorPrimaryDark">#00574B</color>
     <color name="colorAccent">#D81B60</color>
     <color name="freshpick_green">#85D382</color>
     <color name="freshpick_grey">#EDEDED</color>
+    <color name="inSeasonColor">#3B8242</color>
+    <color name="notInSeasonColor">#D33535</color>
+    <color name="headerColor">#85D382</color>
 </resources>
