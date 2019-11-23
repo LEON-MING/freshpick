@@ -195,7 +195,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
         View popupView = inflater.inflate(R.layout.tip_popup, null);
 
         // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int width = 1000;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
