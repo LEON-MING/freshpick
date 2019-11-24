@@ -6,6 +6,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.Gravity;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -176,17 +177,32 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
             }
         });
 
-        BottomNavigationItemView groceryList = findViewById(R.id.grocery_list);
-        setMenuItemOnClick(groceryList, MainActivity.class);
-
-        BottomNavigationItemView home = findViewById(R.id.home);
-        setMenuItemOnClick(home, MainActivity.class);
-
-        BottomNavigationItemView encyclopedia = findViewById(R.id.encyclopedia);
-        setMenuItemOnClick(encyclopedia, EncyclopediaActivity.class);
-
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setSelectedItemId(R.id.encyclopedia);
+
+        bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
+                Class cls;
+                int id = menuItem.getItemId();
+                if (id == R.id.encyclopedia) {
+                    cls = EncyclopediaActivity.class;
+                } else if (id == R.id.home) {
+                    cls = MainActivity.class;
+                } else {
+                    cls = MainActivity.class;
+                }
+                startActivity(new Intent(DetailActivity.this, cls));
+                Log.d("pageChange:", Integer.toString(menuItem.getItemId()));
+                return true;
+            }
+        });
+        bottomNav.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
+            @Override
+            public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
+                // do nothing
+            }
+        });
 
     }
 
