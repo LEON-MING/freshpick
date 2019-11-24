@@ -4,7 +4,9 @@ package com.example.freshpick;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
+
+import com.google.android.material.bottomnavigation.BottomNavigationItemView;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -15,14 +17,24 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Button detailButton = (Button) findViewById(R.id.Detailbutton);
+        BottomNavigationItemView groceryList = findViewById(R.id.grocery_list);
+        setMenuItemOnClick(groceryList, MainActivity.class);
 
-        detailButton.setOnClickListener(new View.OnClickListener() {
+        BottomNavigationItemView home = findViewById(R.id.home);
+        setMenuItemOnClick(home, MainActivity.class);
+
+        BottomNavigationItemView encyclopedia = findViewById(R.id.encyclopedia);
+        setMenuItemOnClick(encyclopedia, EncyclopediaActivity.class);
+
+        BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
+        bottomNav.setSelectedItemId(R.id.home);
+    }
+
+    public void setMenuItemOnClick(BottomNavigationItemView m, final Class cls) {
+        m.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View view) {
-
-                Intent intent = new Intent(MainActivity.this, DetailActivity.class);
-                startActivity(intent);
+            public void onClick(View v) {
+                startActivity(new Intent(MainActivity.this, cls));
             }
         });
     }

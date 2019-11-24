@@ -6,39 +6,40 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/Detailbutton"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Deatil Activity"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
+
+    <ImageView
+        android:id="@+id/imageView7"
+        android:layout_width="49dp"
+        android:layout_height="69dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:layout_marginEnd="4dp"
+        android:backgroundTintMode="add"
+        app:layout_constraintEnd_toStartOf="@+id/searchView"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.906" />
-
+        app:srcCompat="@drawable/home" />
 
     <SearchView
         android:id="@+id/searchView"
-        android:layout_width="381dp"
-        android:layout_height="70dp"
+        android:layout_width="317dp"
+        android:layout_height="79dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/search_bar_back"
         android:iconifiedByDefault="false"
         android:queryHint="Search Encyclopedia"
-        app:layout_constraintBottom_toTopOf="@+id/Detailbutton"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.175"
+        app:layout_constraintHorizontal_bias="0.966"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.023"
         app:queryBackground="@android:color/transparent" />
 
     <TextView
         android:id="@+id/firstBox"
-        android:layout_width="374dp"
-        android:layout_height="230dp"
+        android:layout_width="372dp"
+        android:layout_height="235dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="20dp"
         android:layout_marginEnd="8dp"
@@ -124,7 +125,7 @@
     <TextView
         android:id="@+id/featuredRecipe"
         android:layout_width="369dp"
-        android:layout_height="154dp"
+        android:layout_height="162dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="12dp"
         android:layout_marginEnd="8dp"
@@ -150,7 +151,7 @@
         android:textSize="10pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
-        app:layout_constraintHorizontal_bias="0.04"
+        app:layout_constraintHorizontal_bias="0.03"
         app:layout_constraintStart_toStartOf="@+id/featuredRecipe"
         app:layout_constraintTop_toTopOf="@+id/featuredRecipe" />
 
@@ -159,11 +160,11 @@
         android:layout_width="359dp"
         android:layout_height="56dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="16dp"
+        android:layout_marginTop="24dp"
         android:layout_marginEnd="8dp"
-        android:text="Today, we’re featuring JuicyKoala123’s recipe, the Apple and Greens smoothie!Take 2 apples, 1/2 a head of cabbage, and 20 ounces of broccoli..."
+        android:text="Today, we’re featuring JuicyKoala123’s recipe, the Apple and Greens smoothie! Take 2 apples, 1/2 a head of cabbage, and 20 ounces of broccoli..."
         app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
-        app:layout_constraintHorizontal_bias="0.025"
+        app:layout_constraintHorizontal_bias="0.166"
         app:layout_constraintStart_toStartOf="@+id/featuredRecipe"
         app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
@@ -212,12 +213,13 @@
         app:layout_constraintTop_toTopOf="@+id/featuredRecipe"
         app:srcCompat="@drawable/cabbage" />
 
+
     <TextView
         android:id="@+id/recipeOne"
         android:layout_width="373dp"
         android:layout_height="234dp"
         android:layout_marginStart="8dp"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="8dp"
         android:layout_marginEnd="8dp"
         android:background="@drawable/home_rounded_background"
         android:text=""
@@ -225,22 +227,69 @@
         android:textSize="10pt"
         android:textStyle="bold"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/featuredRecipe" />
 
+
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Fruit Salad"
+        app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+        app:layout_constraintHorizontal_bias="0.075"
+        app:layout_constraintStart_toStartOf="@+id/recipeOne"
+        app:layout_constraintTop_toTopOf="@+id/recipeOne"
+        android:textColor="#605f5f"
+        android:textSize="10pt"
+        android:textStyle="bold"
+        android:layout_marginTop="12dp"
+        />
+
+
+    <ImageView
+        android:id="@+id/imageView8"
+        android:layout_width="94dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="36dp"
+        app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/recipeOne"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/banana_pic" />
+
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="94dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+        app:layout_constraintHorizontal_bias="0.893"
+        app:layout_constraintStart_toStartOf="@+id/recipeOne"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/apple" />
+
+    <ImageView
+        android:id="@+id/imageView4"
+        android:layout_width="94dp"
+        android:layout_height="81dp"
+        android:layout_marginStart="30dp"
+        app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+        app:layout_constraintHorizontal_bias="0.432"
+        app:layout_constraintStart_toStartOf="@+id/recipeOne"
+        app:layout_constraintTop_toBottomOf="@+id/textView4"
+        app:srcCompat="@drawable/grapes" />
+
     <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottomNav"
-        android:layout_width="match_parent"
-        android:layout_height="50dp"
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/featuredRecipe"
-        app:layout_constraintVertical_bias="0.982"
+        app:menu="@menu/bottom_nav_items"
+        android:background="@color/white"/>
 
-        />
 </androidx.constraintlayout.widget.ConstraintLayout>
-
 

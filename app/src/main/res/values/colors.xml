@@ -11,8 +11,6 @@
     <color name="homeBackground">#D7F596</color>
     <color name="search_outline">#EDEDED</color>
     <color name="homeBackground2">#C1FFDB</color>
-
-
-
-
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
