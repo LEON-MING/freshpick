@@ -8,4 +8,7 @@
     <color name="inSeasonColor">#3B8242</color>
     <color name="notInSeasonColor">#D33535</color>
     <color name="headerColor">#85D382</color>
+    <color name="searchBackground">#E4E2E2</color>
+    <color name="homeBackground">#D7F596</color>
+
 </resources>
