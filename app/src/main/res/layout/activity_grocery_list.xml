@@ -19,8 +19,9 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <ListView
-        android:layout_width="411dp"
-        android:layout_height="475dp"
+        android:id="@+id/grocery_list"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
         android:layout_marginTop="148dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
