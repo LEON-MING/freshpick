@@ -10,6 +10,7 @@ import android.view.LayoutInflater;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
+import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.PopupWindow;
@@ -28,6 +29,7 @@ import com.google.android.gms.tasks.Task;
 import com.google.firebase.firestore.CollectionReference;
 import com.google.firebase.firestore.DocumentReference;
 import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.FieldValue;
 import com.google.firebase.firestore.FirebaseFirestore;
 import com.google.firebase.firestore.Query;
 import com.google.firebase.firestore.QueryDocumentSnapshot;
@@ -40,6 +42,7 @@ import org.json.JSONException;
 import org.json.JSONObject;
 
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
 
 public class DetailActivity extends AppCompatActivity implements DetailRecyclerViewAdapter.ItemClickListener{
@@ -52,6 +55,10 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
     String itemName = "";
 
     DetailRecyclerViewAdapter adapter;
+
+    QueryDocumentSnapshot item = null;
+
+    ArrayList<String> reviews = null;
 
 
     @Override
@@ -77,7 +84,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
                     QuerySnapshot produceQuery = task.getResult();
 
 
-                    QueryDocumentSnapshot item = null;
+
                     for (QueryDocumentSnapshot doc: produceQuery) {
                         String docName = doc.getString("name");
                         if (docName.equals(itemName)) {
@@ -107,7 +114,9 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
                         inSeasonText.setTextColor(getResources().getColor(R.color.notInSeasonColor));
                     }
 
-                     ArrayList<String> reviews = (ArrayList<String>) item.get("reviews");
+
+                    reviews = (ArrayList<String>) item.get("reviews");
+                    Collections.reverse(reviews);
 
                     Log.d("reviews:", reviews.toString());
 
@@ -186,7 +195,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
         View popupView = inflater.inflate(R.layout.tip_popup, null);
 
         // create the popup window
-        int width = LinearLayout.LayoutParams.WRAP_CONTENT;
+        int width = 1000;
         int height = LinearLayout.LayoutParams.WRAP_CONTENT;
         boolean focusable = true; // lets taps outside the popup also dismiss it
         final PopupWindow popupWindow = new PopupWindow(popupView, width, height, focusable);
@@ -203,10 +212,25 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
 //                });
 
         Button submitTip = (Button) popupView.findViewById(R.id.submitTipButton);
+        final EditText userTip = (EditText)  popupView.findViewById(R.id.userTip);
 
         submitTip.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
+                DocumentReference itemRef = db.collection("produce").document(item.getId());
+                Log.d("item id:", item.getId());
+                Log.d("user tip:", userTip.getText().toString());
+
+                itemRef.update("reviews", FieldValue.arrayUnion(userTip.getText().toString()));
+
+                reviews.add(0, userTip.getText().toString());
+
+                RecyclerView recyclerView = findViewById(R.id.recyclerView);
+                recyclerView.setLayoutManager(new LinearLayoutManager(getApplicationContext()));
+                adapter = new DetailRecyclerViewAdapter(getApplicationContext(), reviews);
+                recyclerView.setAdapter(adapter);
+
                 popupWindow.dismiss();
             }
         });
