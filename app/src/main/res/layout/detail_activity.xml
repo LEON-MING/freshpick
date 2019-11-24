@@ -7,15 +7,13 @@
     tools:context=".MainActivity">
 
     <ImageView
-        android:id="@+id/BadImage"
+        android:id="@+id/GoodImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.877"
+        app:layout_constraintBottom_toTopOf="@id/goodText"
+        app:layout_constraintEnd_toStartOf="@id/view"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
     <View
@@ -23,135 +21,143 @@
         android:layout_width="1dp"
         android:layout_height="150dp"
         android:background="@android:color/darker_gray"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027" />
+        app:layout_constraintBottom_toTopOf="@id/goodText"
+        app:layout_constraintEnd_toStartOf="@id/BadImage"
+        app:layout_constraintStart_toEndOf="@id/GoodImage"
+        app:layout_constraintTop_toTopOf="parent"/>
 
     <ImageView
-        android:id="@+id/GoodImage"
+        android:id="@+id/BadImage"
         android:layout_width="150dp"
         android:layout_height="150dp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@id/badText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.141"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/view"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.027"
         app:srcCompat="@drawable/common_google_signin_btn_icon_dark" />
 
     <TextView
         android:id="@+id/goodText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:text="Good"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.239"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toStartOf="@id/badText"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/GoodImage"
-        app:layout_constraintVertical_bias="0.014" />
+        app:layout_constraintTop_toBottomOf="@id/GoodImage"
+        app:layout_constraintBottom_toTopOf="@id/produceName"/>
 
     <TextView
         android:id="@+id/badText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:text="Bad"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:gravity="center"
+        android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.758"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintStart_toEndOf="@id/goodText"
         app:layout_constraintTop_toBottomOf="@+id/BadImage"
-        app:layout_constraintVertical_bias="0.016" />
+        app:layout_constraintBottom_toTopOf="@id/produceName"/>
+
+    <TextView
+        android:id="@+id/produceName"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="Apples"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        android:layout_marginLeft="40dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/PriceText"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/goodText"/>
 
     <TextView
         android:id="@+id/PriceText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:text="Average Price: "
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintBottom_toTopOf="@id/inSeasonText"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/produceName"
-        app:layout_constraintTop_toBottomOf="@+id/produceName"
-        app:layout_constraintVertical_bias="0.018" />
-
-    <TextView
-        android:id="@+id/produceName"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:fontFamily="@font/lato"
-        android:text="None"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.109"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/goodText"
-        app:layout_constraintVertical_bias="0.067" />
+        app:layout_constraintTop_toBottomOf="@+id/produceName"/>
 
     <TextView
         android:id="@+id/inSeasonText"
-        android:layout_width="wrap_content"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:fontFamily="@font/lato"
         android:text="In Season"
         android:textColor="@color/inSeasonColor"
         android:textSize="18sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginLeft="40dp"
+        app:layout_constraintBottom_toTopOf="@id/user_tip_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/PriceText"
-        app:layout_constraintTop_toBottomOf="@+id/PriceText"
-        app:layout_constraintVertical_bias="0.022" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/PriceText"/>
+
+    <TextView
+        android:id="@+id/user_tip_text"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:fontFamily="@font/lato"
+        android:text="User Tips"
+        android:textSize="24sp"
+        android:gravity="center_vertical"
+        android:layout_marginLeft="40dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
+        app:layout_constraintEnd_toStartOf="@id/submitTipsButton"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/inSeasonText"/>
 
     <Button
         android:id="@+id/submitTipsButton"
-        android:layout_width="110dp"
-        android:layout_height="49dp"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         android:background="@drawable/transparent_bg_bordered_button"
         android:fontFamily="@font/lato"
         android:text="submit tips"
         android:textColor="@color/headerColor"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginTop="10dp"
+        android:layout_marginRight="30dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintBottom_toTopOf="@id/recyclerView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.893"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inSeasonText"
-        app:layout_constraintVertical_bias="0.051" />
-
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="140dp"
-        android:layout_height="49dp"
-        android:fontFamily="@font/lato"
-        android:text="User Tips"
-        android:textSize="24sp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.136"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inSeasonText"
-        app:layout_constraintVertical_bias="0.085" />
+        app:layout_constraintStart_toEndOf="@id/user_tip_text"
+        app:layout_constraintTop_toBottomOf="@+id/inSeasonText"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
-        android:layout_width="375dp"
-        android:layout_height="248dp"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
         android:background="#F9F9F9"
+        android:layout_marginHorizontal="10dp"
+        app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/user_tip_text"
+        tools:listitem="@layout/detail_recyclerview_row"/>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView4"
-        app:layout_constraintVertical_bias="1.0" />
+        app:layout_constraintTop_toBottomOf="@id/recyclerView"
+        app:menu="@menu/bottom_nav_items" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

@@ -8,4 +8,6 @@
     <color name="inSeasonColor">#3B8242</color>
     <color name="notInSeasonColor">#D33535</color>
     <color name="headerColor">#85D382</color>
+    <color name="black">#000000</color>
+    <color name="white">#FFFFFF</color>
 </resources>
