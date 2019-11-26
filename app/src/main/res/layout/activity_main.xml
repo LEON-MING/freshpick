@@ -6,12 +6,314 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <com.google.android.material.bottomnavigation.BottomNavigationView
-        android:id="@+id/bottom_nav"
-        android:layout_width="0dp"
-        android:layout_height="60dp"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:menu="@menu/bottom_nav_items" />
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+
+        <TextView
+            android:id="@+id/firstBox"
+            android:layout_width="372dp"
+            android:layout_height="235dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/home_rounded_background"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.518"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/searchView" />
+
+        <TextView
+            android:id="@+id/seasonalFavText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="12dp"
+            android:text="Our Seasonal Favorites!"
+            android:textStyle="bold"
+            android:textColor="#605f5f"
+            android:textSize="10pt"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.062"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toTopOf="@+id/firstBox" />
+
+        <ImageView
+            android:id="@+id/firstImage"
+            android:layout_width="71dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.159"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toBottomOf="@+id/seasonalFavText"
+            app:srcCompat="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/firstImage2"
+            android:layout_width="71dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.488"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toBottomOf="@+id/seasonalFavText"
+            app:srcCompat="@drawable/cabbage" />
+
+        <ImageView
+            android:id="@+id/firstImage3"
+            android:layout_width="71dp"
+            android:layout_height="62dp"
+            android:layout_marginTop="20dp"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.833"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toBottomOf="@+id/seasonalFavText"
+            app:srcCompat="@drawable/banana_pic" />
+
+        <TextView
+            android:id="@+id/seasonDescText"
+            android:layout_width="364dp"
+            android:layout_height="59dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="8dp"
+            android:text="What do bananas, cabbages, and apples have in common? Not much. But they are all in season right now!"
+            android:textSize="7pt"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.034"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toBottomOf="@+id/firstImage2" />
+
+        <TextView
+            android:id="@+id/learnMoreText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Learn More"
+            android:textColor="#2F80ED"
+            android:textSize="7pt"
+            app:layout_constraintEnd_toEndOf="@+id/firstBox"
+            app:layout_constraintHorizontal_bias="0.496"
+            app:layout_constraintStart_toStartOf="@+id/firstBox"
+            app:layout_constraintTop_toBottomOf="@+id/seasonDescText" />
+
+        <TextView
+            android:id="@+id/featuredRecipe"
+            android:layout_width="369dp"
+            android:layout_height="162dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginEnd="8dp"
+            android:background="@drawable/home_rounded_background2"
+            android:text=""
+            android:textColor="#605f5f"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintHorizontal_bias="0.333"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/firstBox" />
+
+
+        <TextView
+            android:id="@+id/textView8"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+
+            android:layout_marginTop="12dp"
+            android:text="Featured Recipes"
+            android:textColor="#605f5f"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintHorizontal_bias="0.03"
+            app:layout_constraintStart_toStartOf="@+id/featuredRecipe"
+            app:layout_constraintTop_toTopOf="@+id/featuredRecipe" />
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="359dp"
+            android:layout_height="56dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginTop="24dp"
+            android:layout_marginEnd="8dp"
+            android:text="Today, we’re featuring JuicyKoala123’s recipe, the Apple and Greens smoothie! Take 2 apples, 1/2 a head of cabbage, and 20 ounces of broccoli..."
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintHorizontal_bias="0.166"
+            app:layout_constraintStart_toStartOf="@+id/featuredRecipe"
+            app:layout_constraintTop_toBottomOf="@+id/textView8" />
+
+        <TextView
+            android:id="@+id/textView9"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Read more"
+            android:textColor="#2F80ED"
+            android:textSize="7pt"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintStart_toStartOf="@+id/featuredRecipe"
+            app:layout_constraintTop_toBottomOf="@+id/textView" />
+
+        <ImageView
+            android:id="@+id/imageView5"
+            android:layout_width="46dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintHorizontal_bias="0.126"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/featuredRecipe"
+            app:srcCompat="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/imageView6"
+            android:layout_width="46dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintHorizontal_bias="0.507"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/featuredRecipe"
+            app:srcCompat="@drawable/broccoli" />
+
+        <ImageView
+            android:id="@+id/imageView2"
+            android:layout_width="46dp"
+            android:layout_height="43dp"
+            android:layout_marginTop="8dp"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintHorizontal_bias="0.887"
+            app:layout_constraintStart_toEndOf="@+id/textView8"
+            app:layout_constraintTop_toTopOf="@+id/featuredRecipe"
+            app:srcCompat="@drawable/cabbage" />
+
+            <TextView
+                android:id="@+id/recipeOne"
+                android:layout_width="372dp"
+                android:layout_height="163dp"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="16dp"
+                android:background="@drawable/home_rounded_background"
+                android:text=""
+                android:textColor="#605f5f"
+                android:textSize="10pt"
+                android:textStyle="bold"
+                app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@+id/featuredRecipe" />
+
+            <TextView
+            android:id="@+id/textView4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Fruit Salad"
+            app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+            app:layout_constraintHorizontal_bias="0.075"
+            app:layout_constraintStart_toStartOf="@+id/recipeOne"
+            app:layout_constraintTop_toTopOf="@+id/recipeOne"
+            android:textColor="#605f5f"
+            android:textSize="10pt"
+            android:textStyle="bold"
+            android:layout_marginTop="12dp"
+            />
+
+
+        <ImageView
+            android:id="@+id/imageView8"
+            android:layout_width="94dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="36dp"
+            app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+            app:layout_constraintHorizontal_bias="0.0"
+            app:layout_constraintStart_toStartOf="@+id/recipeOne"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:srcCompat="@drawable/banana_pic" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="94dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+            app:layout_constraintHorizontal_bias="0.893"
+            app:layout_constraintStart_toStartOf="@+id/recipeOne"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:srcCompat="@drawable/apple" />
+
+        <ImageView
+            android:id="@+id/imageView4"
+            android:layout_width="94dp"
+            android:layout_height="81dp"
+            android:layout_marginStart="30dp"
+            app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+            app:layout_constraintHorizontal_bias="0.432"
+            app:layout_constraintStart_toStartOf="@+id/recipeOne"
+            app:layout_constraintTop_toBottomOf="@+id/textView4"
+            app:srcCompat="@drawable/grapes" />
+
+        <TextView
+            android:id="@+id/textView2"
+            android:layout_width="107dp"
+            android:layout_height="18dp"
+            android:layout_marginTop="18dp"
+            android:text="*User Submitted"
+            app:layout_constraintEnd_toEndOf="@+id/recipeOne"
+            app:layout_constraintHorizontal_bias="0.057"
+            app:layout_constraintStart_toEndOf="@+id/textView4"
+            app:layout_constraintTop_toTopOf="@+id/recipeOne" />
+
+        <TextView
+            android:id="@+id/textView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:text="Read more"
+            android:textColor="#2F80ED"
+            android:textSize="7pt"
+            app:layout_constraintEnd_toEndOf="@+id/featuredRecipe"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@+id/imageView4" />
+
+
+            <SearchView
+                android:id="@+id/searchView"
+                android:layout_width="418dp"
+                android:layout_height="71dp"
+                android:layout_marginStart="8dp"
+                android:layout_marginTop="16dp"
+                android:layout_marginEnd="8dp"
+                android:background="@drawable/search_bar_back"
+                android:iconifiedByDefault="false"
+                android:queryHint="Search Encyclopedia"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintHorizontal_bias="0.512"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent"
+                app:queryBackground="@android:color/transparent" />
+
+            <com.google.android.material.bottomnavigation.BottomNavigationView
+                android:id="@+id/bottom_nav"
+                android:layout_width="0dp"
+                android:layout_height="60dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:menu="@menu/bottom_nav_items"
+                android:background="@color/white">
+
+            </com.google.android.material.bottomnavigation.BottomNavigationView>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+
+    </ScrollView>
+
 </androidx.constraintlayout.widget.ConstraintLayout>
+
