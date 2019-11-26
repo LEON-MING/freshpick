@@ -4,7 +4,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    >
 
 
     <ScrollView
@@ -13,7 +14,9 @@
 
         <androidx.constraintlayout.widget.ConstraintLayout
             android:layout_width="match_parent"
-            android:layout_height="match_parent">
+            android:layout_height="match_parent"
+            android:paddingBottom="70dp"
+            >
 
 
         <TextView
@@ -204,7 +207,6 @@
                 android:textColor="#605f5f"
                 android:textSize="10pt"
                 android:textStyle="bold"
-                app:layout_constraintBottom_toTopOf="@id/bottom_nav"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@+id/featuredRecipe" />
@@ -287,7 +289,7 @@
                 android:layout_width="418dp"
                 android:layout_height="71dp"
                 android:layout_marginStart="8dp"
-                android:layout_marginTop="16dp"
+                android:layout_marginTop="8dp"
                 android:layout_marginEnd="8dp"
                 android:background="@drawable/search_bar_back"
                 android:iconifiedByDefault="false"
@@ -298,22 +300,24 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:queryBackground="@android:color/transparent" />
 
-            <com.google.android.material.bottomnavigation.BottomNavigationView
-                android:id="@+id/bottom_nav"
-                android:layout_width="0dp"
-                android:layout_height="60dp"
-                app:layout_constraintBottom_toBottomOf="parent"
-                app:layout_constraintEnd_toEndOf="parent"
-                app:layout_constraintStart_toStartOf="parent"
-                app:menu="@menu/bottom_nav_items"
-                android:background="@color/white">
-
-            </com.google.android.material.bottomnavigation.BottomNavigationView>
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 
 
     </ScrollView>
+
+    <com.google.android.material.bottomnavigation.BottomNavigationView
+        android:id="@+id/bottom_nav"
+        android:layout_width="0dp"
+        android:layout_height="60dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:menu="@menu/bottom_nav_items"
+        android:background="@color/white">
+
+    </com.google.android.material.bottomnavigation.BottomNavigationView>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
 
