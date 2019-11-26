@@ -23,7 +23,6 @@
             android:background="@color/freshpick_grey"
             android:iconifiedByDefault="false"
             android:queryHint="ex: apple, cabbage, etc"
-
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/encFilter"
             app:layout_constraintStart_toStartOf="parent"
