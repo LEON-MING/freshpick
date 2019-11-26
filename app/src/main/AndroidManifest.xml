@@ -11,7 +11,7 @@
         android:theme="@style/AppTheme">
         
         <activity android:name=".EncyclopediaActivity"></activity>
-        <activity android:name=".GroceryList"></activity>
+        <activity android:name=".GroceryListActivity"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -65,7 +65,6 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
 
         BottomNavigationView bottomNav = findViewById(R.id.bottom_nav);
         bottomNav.setSelectedItemId(R.id.encyclopedia);
-
         bottomNav.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(@NonNull MenuItem menuItem) {
@@ -75,6 +74,8 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
                     cls = EncyclopediaActivity.class;
                 } else if (id == R.id.home) {
                     cls = MainActivity.class;
+                } else if (id == R.id.grocery_list){
+                    cls = GroceryListActivity.class;
                 } else {
                     cls = MainActivity.class;
                 }
