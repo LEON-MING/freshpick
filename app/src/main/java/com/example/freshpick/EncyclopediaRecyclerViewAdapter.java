@@ -6,6 +6,8 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Filter;
+import android.widget.Filterable;
 import android.widget.ImageView;
 import android.widget.TextView;
 import com.example.freshpick.EncyclopediaActivity.*;
@@ -18,18 +20,24 @@ import com.squareup.picasso.Picasso;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import java.util.ArrayList;
 import java.util.Collections;
 import java.util.List;
 
-public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<EncyclopediaRecyclerViewAdapter.ViewHolder> {
+public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<EncyclopediaRecyclerViewAdapter.ViewHolder> implements Filterable {
 
     private final List<EncyclopediaEntry> mValues;
+    private List<EncyclopediaEntry> mFilteredValues;
+    private final Filter mFilter;
     private final EncyclopediaActivity mContext;
     private final StorageReference storageRef;
 
     public EncyclopediaRecyclerViewAdapter(List<EncyclopediaEntry> data, Context context) {
         mValues = data;
         Collections.sort(mValues);
+        mFilteredValues = new ArrayList<>();
+        mFilteredValues.addAll(mValues);
+        mFilter = new ItemFilter();
         mContext = (EncyclopediaActivity) context;
         storageRef = FirebaseStorage.getInstance().getReference().child("Encyclopedia Images");
     }
@@ -43,7 +51,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
 
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
-        holder.entry = mValues.get(position);
+        holder.entry = mFilteredValues.get(position);
         holder.mNameView.setText(holder.entry.name);
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -69,7 +77,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
 
     @Override
     public int getItemCount() {
-        return mValues.size();
+        return mFilteredValues.size();
     }
 
     public class ViewHolder extends RecyclerView.ViewHolder {
@@ -93,5 +101,41 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
 
     public interface ItemClickListener {
         void onItemClick(EncyclopediaEntry entry);
+    }
+
+    public Filter getFilter() {
+        return mFilter;
+    }
+
+    private class ItemFilter extends Filter {
+        @Override
+        protected FilterResults performFiltering(CharSequence constraint) {
+
+            String filterString = constraint.toString().toLowerCase();
+
+            FilterResults results = new FilterResults();
+
+            int count = mValues.size();
+            final List<EncyclopediaEntry> newList = new ArrayList<>(count);
+
+            for (EncyclopediaEntry entry : mValues) {
+                if (entry.name.toLowerCase().startsWith(filterString.toLowerCase())) {
+                    newList.add(entry);
+                }
+            }
+
+            results.values = newList;
+            results.count = newList.size();
+
+            return results;
+        }
+
+        @SuppressWarnings("unchecked")
+        @Override
+        protected void publishResults(CharSequence constraint, FilterResults results) {
+            mFilteredValues = (ArrayList<EncyclopediaEntry>) results.values;
+            notifyDataSetChanged();
+        }
+
     }
 }

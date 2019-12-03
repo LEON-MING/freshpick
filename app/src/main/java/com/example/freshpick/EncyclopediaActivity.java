@@ -10,6 +10,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
+import android.widget.SearchView;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -25,7 +26,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class EncyclopediaActivity extends AppCompatActivity implements EncyclopediaRecyclerViewAdapter.ItemClickListener {
+public class EncyclopediaActivity extends AppCompatActivity implements EncyclopediaRecyclerViewAdapter.ItemClickListener, SearchView.OnQueryTextListener {
 
     public static final String GROCERY_NAME = "com.example.freshpick.GROCERY_NAME";
     private RecyclerView mRecyclerView;
@@ -90,14 +91,28 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
                 // do nothing
             }
         });
+
+        SearchView searchView = findViewById(R.id.encSearch);
+        searchView.setOnQueryTextListener(EncyclopediaActivity.this);
     }
-
-
 
     public void onItemClick(EncyclopediaEntry entry) {
         Intent intent = new Intent(this, DetailActivity.class);
         intent.putExtra(GROCERY_NAME, entry.name);
         startActivity(intent);
+    }
+
+    @Override
+    public boolean onQueryTextSubmit(String query) {
+        Log.d("onQueryTextSubmit:", query);
+        return true;
+    }
+
+    @Override
+    public boolean onQueryTextChange(String newText) {
+        Log.d("onQueryTextChange:", newText);
+        ((EncyclopediaRecyclerViewAdapter) mAdapter).getFilter().filter(newText);
+        return true;
     }
 
     class EncyclopediaEntry implements Comparable<EncyclopediaEntry> {
