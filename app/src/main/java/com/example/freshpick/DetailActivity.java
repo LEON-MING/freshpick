@@ -67,7 +67,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
         //get intent stuff
         Intent intent  = getIntent();
         this.itemName = intent.getStringExtra(EncyclopediaActivity.GROCERY_NAME);
-        this.itemName = "Apples";
+//        this.itemName = "Apples";
 
 
         //get item from the db
