@@ -13,6 +13,7 @@
         android:width="0dp"
         android:clickable="false"
         android:focusable="false"
+        android:fontFamily="sans-serif"
         app:layout_constraintBottom_toTopOf="@+id/list_view_item_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
@@ -23,6 +24,7 @@
         android:id="@+id/list_view_item_text"
         android:layout_width="162dp"
         android:layout_height="30dp"
+        android:fontFamily="@font/lato"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/list_view_item_checkbox"
         app:layout_constraintTop_toTopOf="parent" />
