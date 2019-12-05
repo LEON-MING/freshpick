@@ -201,7 +201,7 @@ public class DetailActivity extends AppCompatActivity implements DetailRecyclerV
         bottomNav.setOnNavigationItemReselectedListener(new BottomNavigationView.OnNavigationItemReselectedListener() {
             @Override
             public void onNavigationItemReselected(@NonNull MenuItem menuItem) {
-                // do nothing
+                startActivity(new Intent(DetailActivity.this, EncyclopediaActivity.class));
             }
         });
 
