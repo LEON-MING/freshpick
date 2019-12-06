@@ -1,5 +1,6 @@
 package com.example.freshpick;
 
+import android.app.Activity;
 import android.content.Context;
 import android.net.Uri;
 import android.util.Log;
@@ -29,7 +30,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
     private final List<EncyclopediaEntry> mValues;
     private List<EncyclopediaEntry> mFilteredValues;
     private final Filter mFilter;
-    private final EncyclopediaActivity mContext;
+    private final Context mContext;
     private final StorageReference storageRef;
 
     public EncyclopediaRecyclerViewAdapter(List<EncyclopediaEntry> data, Context context) {
@@ -38,7 +39,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
         mFilteredValues = new ArrayList<>();
         mFilteredValues.addAll(mValues);
         mFilter = new ItemFilter();
-        mContext = (EncyclopediaActivity) context;
+        mContext = context;
         storageRef = FirebaseStorage.getInstance().getReference().child("Encyclopedia Images");
     }
 
@@ -56,7 +57,25 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                mContext.onItemClick(holder.entry);
+                if (mContext instanceof EncyclopediaActivity) {
+                    ((EncyclopediaActivity) mContext).onItemClick(holder.entry);
+                } else if (mContext instanceof GroceryListActivity){
+                    ((GroceryListActivity) mContext).onItemClick(holder.entry);
+                } else {
+                    ((MainActivity) mContext).onItemClick(holder.entry);
+                }
+            }
+        });
+        holder.mAddToListView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                if (mContext instanceof EncyclopediaActivity) {
+                    ((EncyclopediaActivity) mContext).onAddToListClick(holder.entry);
+                } else if (mContext instanceof GroceryListActivity){
+                    ((GroceryListActivity) mContext).onAddToListClick(holder.entry);
+                } else {
+                    ((MainActivity) mContext).onAddToListClick(holder.entry);
+                }
             }
         });
         storageRef.child(holder.entry.name + ".png").getDownloadUrl().addOnSuccessListener(new OnSuccessListener<Uri>() {
@@ -84,6 +103,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
         public final View mView;
         public final TextView mNameView;
         public final ImageView mImageView;
+        public final ImageView mAddToListView;
         public EncyclopediaEntry entry;
 
         public ViewHolder(View view) {
@@ -91,6 +111,7 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
             mView = view;
             mImageView = view.findViewById(R.id.imageView);
             mNameView = view.findViewById(R.id.grocery_item_name);
+            mAddToListView = view.findViewById(R.id.add_to_list);
         }
 
         @Override
@@ -101,6 +122,10 @@ public class EncyclopediaRecyclerViewAdapter extends RecyclerView.Adapter<Encycl
 
     public interface ItemClickListener {
         void onItemClick(EncyclopediaEntry entry);
+    }
+
+    public interface AddToListClickListener {
+        void onAddToListClick(EncyclopediaEntry entry);
     }
 
     public Filter getFilter() {

@@ -26,7 +26,8 @@ import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
-public class EncyclopediaActivity extends AppCompatActivity implements EncyclopediaRecyclerViewAdapter.ItemClickListener, SearchView.OnQueryTextListener {
+public class EncyclopediaActivity extends AppCompatActivity implements EncyclopediaRecyclerViewAdapter.ItemClickListener,
+        EncyclopediaRecyclerViewAdapter.AddToListClickListener, SearchView.OnQueryTextListener {
 
     public static final String GROCERY_NAME = "com.example.freshpick.GROCERY_NAME";
     private RecyclerView mRecyclerView;
@@ -102,6 +103,13 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
         startActivity(intent);
     }
 
+    public void onAddToListClick(EncyclopediaEntry entry) {
+        ListViewItemObj item1 = new ListViewItemObj();
+        item1.setChecked(false);
+        item1.setItemText(entry.name);
+        GroceryListActivity.demoItemList.add(item1);
+    }
+
     @Override
     public boolean onQueryTextSubmit(String query) {
         Log.d("onQueryTextSubmit:", query);
@@ -115,7 +123,7 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
         return true;
     }
 
-    class EncyclopediaEntry implements Comparable<EncyclopediaEntry> {
+    public static class EncyclopediaEntry implements Comparable<EncyclopediaEntry> {
         public String name;
         public String imageUrl;
 

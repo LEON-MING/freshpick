@@ -26,6 +26,7 @@
         android:src="@color/white"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/bg2"
         app:layout_constraintTop_toTopOf="parent"/>
 
     <TextView
@@ -50,15 +51,17 @@
         app:layout_constraintStart_toEndOf="@id/bg"
         app:layout_constraintTop_toTopOf="parent"/>
 
-    <ImageView
+    <ImageButton
         android:id="@+id/add_to_list"
         android:layout_width="80dp"
         android:layout_height="0dp"
-        android:padding="20dp"
+        android:background="@drawable/shopping_cart_button_background"
         android:alpha="0.8"
-        android:src="@drawable/shopping_cart"
+        android:scaleType="fitCenter"
+        android:padding="20dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toEndOf="@id/bg"
-        app:layout_constraintTop_toTopOf="parent"/>
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/shopping_cart" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

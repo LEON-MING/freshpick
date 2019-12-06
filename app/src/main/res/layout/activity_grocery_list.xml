@@ -6,40 +6,66 @@
     android:layout_height="match_parent"
     tools:context=".GroceryListActivity">
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginStart="20dp"
-        android:layout_marginTop="10dp"
-        android:fontFamily="@font/lato_bold"
-        android:text="@string/title_grocery_list"
-        android:textSize="30sp"
-        android:gravity="center_vertical"
-        app:layout_constraintBottom_toTopOf="@id/searchView"
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:id="@+id/encSearchAndFilter"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="20dp"
+        app:layout_constraintBottom_toTopOf="@id/encItems"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent">
 
-    <SearchView
-        android:id="@+id/searchView"
-        android:layout_width="0dp"
-        android:layout_height="50dp"
-        android:layout_marginHorizontal="20dp"
+        <SearchView
+            android:id="@+id/encSearch"
+            android:layout_width="0dp"
+            android:layout_height="50dp"
+            android:background="@color/freshpick_grey"
+            android:iconifiedByDefault="false"
+            android:queryHint="ex: apple, cabbage, etc"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/encFilter"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+        <TextView
+            android:id="@+id/encFilter"
+            android:layout_width="wrap_content"
+            android:layout_height="50dp"
+            android:gravity="center"
+            android:padding="10dp"
+            android:layout_marginLeft="10dp"
+            android:text="Filters"
+            android:textColor="@color/freshpick_green"
+            android:textSize="16sp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/encSearch"
+            app:layout_constraintTop_toTopOf="parent"/>
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/encItems"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toTopOf="@id/grocery_list"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/textView"/>
+        app:layout_constraintTop_toBottomOf="@id/encSearchAndFilter"
+        tools:listitem="@layout/fragment_encyclopedia_row" />
 
     <ListView
         android:id="@+id/grocery_list"
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_marginHorizontal="20dp"
+        android:paddingTop="20dp"
         app:layout_constraintBottom_toTopOf="@id/shareButton"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/searchView"/>
+        app:layout_constraintTop_toBottomOf="@id/encItems"
+        tools:listitem="@layout/grocery_list_item"/>
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/shareButton"
