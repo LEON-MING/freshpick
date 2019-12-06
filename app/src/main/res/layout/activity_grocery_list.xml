@@ -22,7 +22,7 @@
             android:layout_height="50dp"
             android:background="@color/freshpick_grey"
             android:iconifiedByDefault="false"
-            android:queryHint="Add items to your grocery list"
+            android:queryHint="Add items to your list"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toStartOf="@id/encFilter"
             app:layout_constraintStart_toStartOf="parent"
