@@ -10,6 +10,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.Toast;
@@ -78,6 +79,15 @@ public class GroceryListActivity extends AppCompatActivity {
                     itemDto.setChecked(true);
                 }
 
+            }
+        });
+
+        Button selectAllButton = (Button)findViewById(R.id.clearButton);
+        selectAllButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                demoItemList.clear();
+                groceryListDataAdapter.notifyDataSetChanged();
             }
         });
 
