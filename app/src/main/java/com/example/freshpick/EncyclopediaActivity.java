@@ -12,6 +12,7 @@ import android.util.Log;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.SearchView;
+import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -113,6 +114,9 @@ public class EncyclopediaActivity extends AppCompatActivity implements Encyclope
         item1.setChecked(false);
         item1.setItemText(entry.name);
         GroceryListActivity.demoItemList.add(item1);
+        Toast toast = Toast.makeText(getApplicationContext(), "Added " + entry.name + " to grocery list.", Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 
     @Override

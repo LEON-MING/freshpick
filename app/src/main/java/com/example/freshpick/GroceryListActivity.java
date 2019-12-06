@@ -182,6 +182,9 @@ public class GroceryListActivity extends AppCompatActivity implements Encycloped
         item1.setChecked(false);
         item1.setItemText(entry.name);
         GroceryListActivity.demoItemList.add(item1);
+        Toast toast = Toast.makeText(getApplicationContext(), "Added " + entry.name + " to grocery list.", Toast.LENGTH_SHORT);
+        toast.show();
+
     }
 
     @Override
